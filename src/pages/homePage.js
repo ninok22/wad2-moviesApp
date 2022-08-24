@@ -34,6 +34,14 @@ const genreId = Number(genreFilter);
     else setGenreFilter(value);
   };
 
+  //adding a 'favorite' property to the movie object
+  const addToFavorites = (movieId) => {
+    const updatedMovies = movies.map((m) =>
+      m.id === movieId ? { ...m, favorite: true } : m
+    );
+    setMovies(updatedMovies);
+  };
+
 useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
@@ -65,7 +73,7 @@ useEffect(() => {
             genreFilter={genreFilter}
         />
         </Grid>
-        <MovieList movies={displayedMovies}></MovieList>
+        <MovieList movies={displayedMovies} selectFavorite={addToFavorites} />
       </Grid>
     </Grid>
   );
