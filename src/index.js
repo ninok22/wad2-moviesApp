@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import HomePage from "./pages/homePage";
+// temporary solution 
+import MovieDetailsPage from './pages/movieDetailsPage'
 /* We will eventually plug this page into a routing component. 
 In the meantime, we will statically link it to a top-level component 
 that feeds it an array of movies. */
@@ -87,10 +89,24 @@ const sample = {
 
 const movies = [sample, sample, sample, sample, sample, sample, sample];
 
+const images = [
+    "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+    "/v1QQKq8M0fWxMgSdGOX1aCv8qMB.jpg",
+    "/2iGN0aKHJYD0xQydlfuCUAcgNbO.jpg",
+    "/rjBwhsOzHKUw2NIOrE7aMqjfe6s.jpg",
+  ]
+
+// const App = () => {
+//   return (
+//       <HomePage movies={movies} />
+//   );
+// };
+
+//changed App components to ==>
 const App = () => {
-  return (
-      <HomePage movies={movies} />
-  );
-};
+    return (
+        <MovieDetailsPage movie={sample} images={images} />
+        );
+  };
 
 ReactDOM.render(<App />, document.getElementById("root"));
