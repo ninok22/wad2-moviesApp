@@ -9,6 +9,7 @@ import SiteHeader from './components/siteHeader';
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
+import MoviesContextProvider from "./contexts/moviesContext";
 
 //retain all data in the cache for 1 hour before it becomes invalidated.
 const queryClient = new QueryClient({
@@ -26,6 +27,8 @@ const App = () => {
     <QueryClientProvider client={queryClient}>  
       <BrowserRouter>
           <SiteHeader />      {/* New Header  */}
+          <MoviesContextProvider>
+            {" "}
           <Switch></Switch>
         <Switch>
           <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
@@ -35,6 +38,7 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           <Redirect from="*" to="/" />
         </Switch>
+        </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
