@@ -3,6 +3,8 @@ import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getMovies} from '../api/tmdb-api'
+import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+
 
 const HomePage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
@@ -21,13 +23,24 @@ const HomePage = (props) => {
   localStorage.setItem('favorites', JSON.stringify(favorites))
   const addToFavorites = (movieId) => true 
 
-  return (
-    <PageTemplate
-      title="Discover Movies"
-      movies={movies}
-      selectFavorite={addToFavorites}
-    />    
-  );
+//   return (
+//     <PageTemplate
+//       title="Discover Movies"
+//       movies={movies}
+//       selectFavorite={addToFavorites}
+//     />    
+//   );
+// };
+
+return (
+  <PageTemplate
+    title="Discover Movies"
+    movies={movies}
+    action={(movie) => { //render prop's function returns the icon to display in movie cards on the home page
+      return <AddToFavoritesIcon movie={movie} />
+    }}
+  />
+);
 };
 
 export default HomePage;

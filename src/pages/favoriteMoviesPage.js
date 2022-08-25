@@ -3,7 +3,9 @@ import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
-import Spinner from '../components/spinner'
+import Spinner from '../components/spinner';
+import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
+import WriteReview from "../components/cardIcons/writeReview";
 
 const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);
@@ -31,11 +33,29 @@ const FavoriteMoviesPage = () => {
 
   const toDo = () => true;
 
-  return (
+//   return (
+//     <PageTemplate
+//       title="Favourite Movies"
+//       movies={movies}
+//       selectFavorite={toDo}
+//     />
+//   );
+// };
+
+return (
     <PageTemplate
-      title="Favourite Movies"
+      title="Favorite Movies"
       movies={movies}
-      selectFavorite={toDo}
+      /* code indicates that movie cards on the Favorite movies page 
+      should have two action icons: Remove from the Favorites and Write a Review */
+      action={(movie) => { //introducing the render prop
+        return (
+          <>
+            <RemoveFromFavorites movie={movie} />
+            <WriteReview movie={movie} />
+          </>
+        );
+      }}
     />
   );
 };
