@@ -103,7 +103,7 @@ const SiteHeader = ( { history }) => {
             )}
         </Toolbar>
       </AppBar>
-      <div className={classes.offset} />
+      <div className={classes.offset} /> 
     </>
   );
 };
