@@ -16,10 +16,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const Header = (props ) => {
 const Header = ({ title, history }) => {
   const classes = useStyles();
-  //const title = props.title
+  
   return (
     <Paper component="div" className={classes.root}>
       <IconButton aria-label="go back" onClick={() => history.goBack()}>
@@ -37,5 +36,4 @@ const Header = ({ title, history }) => {
   );
 };
 
-// export default Header;
 export default withRouter(Header);

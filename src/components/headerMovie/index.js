@@ -21,10 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const MovieHeader = (props) => {
 const MovieHeader = ( { movie, history}) => {
   const classes = useStyles();
-  // const movie = props.movie;
 
   return (
     <Paper component="div" className={classes.root}>
@@ -48,5 +46,4 @@ const MovieHeader = ( { movie, history}) => {
   );
 };
 
-// export default MovieHeader;
 export default withRouter(MovieHeader);

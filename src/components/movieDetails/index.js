@@ -1,4 +1,3 @@
-// import React from "react";
 import React, { useState} from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
@@ -30,10 +29,6 @@ const useStyles = makeStyles((theme) => ({
     right: theme.spacing(2),
   },
 }));
-
-// const MovieDetails = ( props) => {
-//   const classes = useStyles();
-//   const movie = props.movie
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const classes = useStyles();
@@ -81,7 +76,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <NavigationIcon />
         Reviews
       </Fab>
-      
+
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>

@@ -28,34 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// export default function FilterMoviesCard(props) {
-//   const classes = useStyles();
-
-//   const genres = [
-//     {id: 1, name: "Animation"},
-//     {id: 2, name: "Comedy"},
-//     {id: 3, name: "Thriller"}
-//   ]
-
   export default function FilterMoviesCard(props) {
     const classes = useStyles();
     const [genres, setGenres] = useState([{ id: '0', name: "All" }])
-  
-    // useEffect(() => {
-    //   fetch(
-    //     "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-    //       process.env.REACT_APP_TMDB_KEY
-    //   )
-    //     .then(res => res.json())
-    //     .then(json => {
-    //       // console.log(json.genres) 
-    //       return json.genres
-    //     })
-    //     .then(apiGenres => {
-    //       setGenres([genres[0], ...apiGenres]);
-    //     });
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
 
     useEffect(() => {
       getGenres().then((allGenres) => {
@@ -83,11 +58,6 @@ const useStyles = makeStyles((theme) => ({
           Filter the movies.
         </Typography>
         <TextField
-          // className={classes.formControl}
-          // id="filled-search"
-          // label="Search field"
-          // type="search"
-          // variant="filled"
           className={classes.formControl}
           id="filled-search"
           label="Search field"
@@ -99,8 +69,6 @@ const useStyles = makeStyles((theme) => ({
         <FormControl className={classes.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
-            // labelId="genre-label"
-            // id="genre-select"
             labelId="genre-label"
             id="genre-select"
             value={props.genreFilter}
