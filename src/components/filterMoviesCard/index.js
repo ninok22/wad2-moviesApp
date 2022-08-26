@@ -1,5 +1,4 @@
 import React from "react";  // useState/useEffect redundant 
-// import React, {useState, useEffect}  from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -59,30 +58,6 @@ export default function FilterMoviesCard(props) {
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
   };
-
-  
-
-//   export default function FilterMoviesCard(props) {
-//     const classes = useStyles();
-//     const [genres, setGenres] = useState([{ id: '0', name: "All" }])
-
-//     useEffect(() => {
-//       getGenres().then((allGenres) => {
-//         setGenres([genres[0], ...allGenres]);
-//       });
-//       // eslint-disable-next-line react-hooks/exhaustive-deps
-//     }, [])
-  
-//     const handleChange = (e, type, value) => {
-//       e.preventDefault()
-//       props.onUserInput(type, value)   // NEW
-//     };
-//     const handleTextChange = e => {
-//       handleChange(e, "name", e.target.value)
-//     }
-//     const handleGenreChange = e => {
-//       handleChange(e, "genre", e.target.value)
-//     };
   
   return (
     <Card className={classes.root} variant="outlined">
