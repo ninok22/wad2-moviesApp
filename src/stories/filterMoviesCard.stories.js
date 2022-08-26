@@ -1,18 +1,3 @@
-// import React from "react";
-// import FilterMoviesCard from "../components/filterMoviesCard";
-
-// export default {
-//   title: "Home Page/FilterMoviesCard",
-//   component: FilterMoviesCard,
-// };
-
-// export const Basic = () => {
-//   return <FilterMoviesCard />;
-// };
-// Basic.storyName = "Default";
-
-// OVERWRITING STORIES
-
 import React from "react";
 import FilterMoviesCard from "../components/filterMoviesCard";
 import { MemoryRouter } from "react-router";

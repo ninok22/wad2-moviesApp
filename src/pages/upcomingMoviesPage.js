@@ -3,37 +3,8 @@ import PageTemplate from '../components/templateMovieListPage'
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getMovies} from '../api/tmdb-api'
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
-       
-                // OLD CODE
-// const UpcomingMoviesPage = (props) => {
-//   const [movies, setMovies] = useState([]);
-//   const favorites = movies.filter(m => m.favorite)
-//   localStorage.setItem('favorites', JSON.stringify(favorites))
-
-//   const addToFavorites = (movieId) => {
-//     const updatedMovies = movies.map((m) =>
-//       m.id === movieId ? { ...m, favorite: true } : m
-//     );
-//     setMovies(updatedMovies);
-//   };
-
-//   useEffect(() => {
-//     getMovies().then(movies => {
-//       setMovies(movies);
-//     });
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
-//   return (
-//     <PageTemplate
-//       title='Upcoming Movies'
-//       movies={movies}
-//       selectFavorite={addToFavorites}
-//     />
-//   );
-// };
-// export default UpcomingMoviesPage;
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd'
+ 
 
 const UpcomingMoviesPage = (props) => {
     const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
@@ -47,22 +18,17 @@ const UpcomingMoviesPage = (props) => {
     }  
     const movies = data.results;
   
-    // Redundant, but necessary to avoid app crashing.
-    const favorites = movies.filter(m => m.favorite)
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-    const addToFavorites = (movieId) => true 
-  
   return (
     <PageTemplate
       title="Upcoming Movies"
       movies={movies}
-      action={(movie) => { //render prop's function returns the icon to display in movie cards on the home page
-        return <AddToFavoritesIcon movie={movie} />
+      action={(movie) => { //render prop's function returns the icon to display in movie cards on the upcoming movies page
+        return <PlaylistAddIcon movie={movie} />
       }}
     />
-  );
+   );
   };
   
   export default UpcomingMoviesPage;
-  
-  
+
+
