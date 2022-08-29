@@ -1,9 +1,9 @@
 import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import { useQuery } from 'react-query'
-import Spinner from '../components/spinner'
-import {getMovies} from '../api/tmdb-api'
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import { useQuery } from 'react-query';
+import Spinner from '../components/spinner';
+import {getMovies} from '../api/tmdb-api';
+import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
 
 
 const HomePage = (props) => {
@@ -27,7 +27,9 @@ return (
   <PageTemplate
     title="Discover Movies"
     movies={movies}
-    action={(movie) => { //render prop's function returns the icon to display in movie cards on the home page
+    //the render prop function returns the icon 
+    //to displayin movie card on the home page (RED ICON?)
+    action={(movie) => {                    
       return <AddToFavoritesIcon movie={movie} />
     }}
   />

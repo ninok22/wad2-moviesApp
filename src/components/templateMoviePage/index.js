@@ -21,17 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const TemplateMoviePage = ({ movie, children }) => {
-//   const classes = useStyles();
-//   const [images, setImages] = useState([]);
-
-//   useEffect(() => {
-//     getMovieImages(movie.id).then((images) => {
-//       setImages(images);
-//     });
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
 const TemplateMoviePage = ({ movie, children }) => {
     const classes = useStyles();
     const { data , error, isLoading, isError } = useQuery(

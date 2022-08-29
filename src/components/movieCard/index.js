@@ -1,4 +1,3 @@
-// import React from "react";
 import React, { useContext  } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -30,6 +29,7 @@ export default function MovieCard({ movie, action }) {
   const classes = useStyles();
   const { favorites, addToFavorites } = useContext(MoviesContext);
 
+
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
   } else {
@@ -40,7 +40,7 @@ export default function MovieCard({ movie, action }) {
     e.preventDefault();
     addToFavorites(movie);
   };
-
+  
 return (
     <Card className={classes.card}>
       <CardHeader
@@ -83,9 +83,8 @@ return (
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
+      {/* assosiated w/click event handler w/render prop funtion */}
         {action(movie)} 
-        {/*replaced the hard-coded Favorite icon and its associated 
-        click event handler with the render prop function call */}
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
