@@ -6,7 +6,6 @@ import { getUpcomingMovies } from "../api/tmdb-api";
 import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch'
  
 const UpcomingMoviesPage = (props) => {
-    // const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
     const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
 
     if (isLoading) {

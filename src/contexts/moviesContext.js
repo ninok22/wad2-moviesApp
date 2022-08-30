@@ -3,7 +3,8 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [mustWatchList, setMustWatch] = useState( [] ) // NEW - array
+  //storing only selected movie id in the mustWatchList array
+  const [mustWatchList, setMustWatch] = useState( [] ) // NEW - array e4
   const [myReviews, setMyReviews] = useState( {} ) // NEW - function
   const [favorites, setFavorites] = useState( [] ) // - array
 
@@ -34,6 +35,12 @@ const MoviesContextProvider = (props) => {
     setMustWatch(newMustWatch)
   };
 
+  const RemoveFromMustWatch = (movie) => {
+    setMustWatch(mustWatchList.filter(
+      (mId) => mId !== movie.id
+    ))
+  }
+
   return (
     <MoviesContext.Provider
       value={{
@@ -42,7 +49,8 @@ const MoviesContextProvider = (props) => {
         removeFromFavorites,
         addReview,
         mustWatchList,
-        addToMustWatch
+        addToMustWatch,
+        RemoveFromMustWatch
       }}
     >
       {props.children}
