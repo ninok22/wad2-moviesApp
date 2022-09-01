@@ -2,12 +2,11 @@ import React from "react";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import { getUpcomingMovies } from "../api/tmdb-api"; 
-import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch';
- 
+import { getTopRatedMovies } from "../api/tmdb-api";
+import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch' 
 
-const UpcomingMoviesPage = (props) => {
-    const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
+const TopRatedMoviesPage = (props) => {
+    const {  data, error, isLoading, isError }  = useQuery('topRated', getTopRatedMovies)
 
     if (isLoading) {
       return <Spinner />
@@ -25,7 +24,7 @@ const UpcomingMoviesPage = (props) => {
     
   return (
     <PageTemplate
-      title="Upcoming Movies"
+      title="Top Rated"
       movies={movies}
       action={(movie) => { //render prop's function returns the icon to display in movie cards on the upcoming movies page
         return <AddToMustWatchIcon movie={movie} />
@@ -33,5 +32,17 @@ const UpcomingMoviesPage = (props) => {
     />
    );
   };
-  
-  export default UpcomingMoviesPage;
+
+    // return (
+    //     <PageTemplate
+    //       title="Top Rated Movies"
+    //       movies={movies}
+    //     //   action={(movie) => { //render prop's function returns the icon to display in movie cards on the upcoming movies page
+    //     //     return <AddToMustWatchIcon movie={movie} />
+    //     //   }}
+    //     />
+    //    );
+    //   };
+      
+      export default TopRatedMoviesPage;
+    
