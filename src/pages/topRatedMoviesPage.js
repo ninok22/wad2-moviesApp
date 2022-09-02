@@ -3,7 +3,9 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import { getTopRatedMovies } from "../api/tmdb-api";
-import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch' 
+// import { MoviesContext } from "../contexts/moviesContext";
+import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch';
+import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
 const TopRatedMoviesPage = (props) => {
     const {  data, error, isLoading, isError }  = useQuery('topRated', getTopRatedMovies)
@@ -18,31 +20,24 @@ const TopRatedMoviesPage = (props) => {
     const movies = data.results;
 
     // Redundant, but necessary to avoid app crashing.
-    const mustWatchList = movies.filter(m => m.mustWatch)
-    localStorage.setItem('mustWatchList', JSON.stringify(mustWatchList))
-    const addToMustWatch = (movieId) => true 
+    // const favorites = movies.filter(m => m.favorite)
+    // localStorage.setItem('favorites', JSON.stringify(favorites))
     
   return (
     <PageTemplate
       title="Top Rated"
       movies={movies}
-      action={(movie) => { //render prop's function returns the icon to display in movie cards on the upcoming movies page
+      action={(movie) => { 
         return <AddToMustWatchIcon movie={movie} />
+        // return 
+        // <>
+        //   <AddToFavoritesIcon movie={movie} />
+        //   <AddToMustWatchIcon movie={movie} />
+        // </>
       }}
     />
    );
   };
-
-    // return (
-    //     <PageTemplate
-    //       title="Top Rated Movies"
-    //       movies={movies}
-    //     //   action={(movie) => { //render prop's function returns the icon to display in movie cards on the upcoming movies page
-    //     //     return <AddToMustWatchIcon movie={movie} />
-    //     //   }}
-    //     />
-    //    );
-    //   };
       
       export default TopRatedMoviesPage;
     

@@ -9,7 +9,8 @@ import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+import MovieCredits from "../movieCredits";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,16 +24,23 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: theme.spacing(0.5),
   },
-  fab: {
+  fab1: {
     position: "fixed",
     bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    right: theme.spacing(5),
+  },
+  fab2: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(25),
   },
 }));
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie, credit }) => {  // Don't miss this!
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen1, setDrawerOpen1] = useState(false);
+  const [drawerOpen2, setDrawerOpen2] = useState(false);
+  
 
   return (
     <>
@@ -67,20 +75,47 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
 
-      <Fab
+      <Fab key="fab1"
         color="secondary"
         variant="extended"
-        onClick={() =>setDrawerOpen(true)}
-        className={classes.fab}
+        onClick={() =>setDrawerOpen1(true)}
+        className={classes.fab1}
       >
         <NavigationIcon />
         Reviews
       </Fab>
 
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <Fab key="fab2"
+        color="secondary"
+        variant="extended"
+        onClick={() =>setDrawerOpen2(true)}
+        // onClick={
+        //   <Link
+        //     to={{
+        //       pathname: `/credits/${c.id}`,
+        //       state: {
+        //         credit: c,
+        //         movie: movie,
+        //       },
+        //     }}>
+        //       Cast List
+        //  </Link>
+        // }
+        className={classes.fab2}
+      >
+        <NavigationIcon />
+        Cast
+      </Fab>
+
+      <Drawer key="drawer1" anchor="top" open={drawerOpen1} onClose={() => setDrawerOpen1(false)}>
         <MovieReviews movie={movie} />
+      </Drawer>
+      <Drawer key="drawer2" anchor="top" open={drawerOpen2} onClose={() => setDrawerOpen2(false)}>
+        <MovieCredits credit={credit} />
       </Drawer>
       </>
   );
+
+
 };
 export default  MovieDetails ;

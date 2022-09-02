@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   submit: { // NEW
     marginRight: theme.spacing(2),
   },
-  snack: { // NEW
+  snack: { // NEW - confirmation message when submitting a review
     width: "50%",
     "& > * ": {
       width: "100%",

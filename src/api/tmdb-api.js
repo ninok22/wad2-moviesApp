@@ -103,21 +103,13 @@ export const getMovieImages = ({ queryKey }) => {
     });
   };
 
-  // export const getCredits = (args) => {
-  //   console.log(args)
-  //   const [, idPart] = args.queryKey;
-  //   const { id } = idPart;
-  //   return fetch(
-  //     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  //   ).then((response) => {
-  //     if (!response.ok) {
-  //       throw new Error(response.json().message);
-  //     }
-  //     return response.json();
-  //   })
-  //   .catch((error) => {
-  //     throw error
-  //  });
-  // };
-
-
+  //api call for showing movie credit
+  export const getMovieCredits = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credit?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        return json.results;
+      });
+  };
