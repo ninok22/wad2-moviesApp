@@ -13,8 +13,8 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import MustWatchListPage from './pages/mustWatchListPage';
 import TopRatedMoviesPage from './pages/topRatedMoviesPage';
-import MovieCastPage from './pages/movieCastPage';
-
+// import MovieCastPage from './pages/movieCastPage';
+import MovieCreditsPage from './pages/movieCreditsPage';
 
 //retain all data in the cache for 1 hour before it becomes invalidated.
 const queryClient = new QueryClient({
@@ -36,7 +36,7 @@ const App = () => {
             {" "}
           <Switch></Switch>
         <Switch>
-          <Route path="/credits/:id" component={MovieCastPage} />
+          <Route path="/movies/:id/moviecredits" component={MovieCreditsPage} />
           <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
           <Route exact path="/movies/mustWatchList" component={MustWatchListPage} />
           <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />

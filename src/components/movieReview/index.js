@@ -1,5 +1,6 @@
 import React from "react";
 
+// Full Review Page
 const MovieReview =  ({ review }) => {
   return (
     <>
