@@ -10,8 +10,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
-import MovieCredits from "../movieCredits";
-import { Button } from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 
@@ -88,38 +86,23 @@ const MovieDetails = ({ movie, credit }) => {  // Don't miss this!
         Reviews
       </Fab>
 
-      <Fab key="fab2"
-        component="Link"
-        href={`/movies/${movie.id}/moviecredits`}
-        color="secondary"
-        variant="extended"
-        onClick={() =>setLinkOpen(true)}
-        className={classes.fab2}
-      >
-        <NavigationIcon />
-        Cast
-      </Fab>
-
       <Drawer  anchor="top" open={drawerOpen1} onClose={() => setDrawerOpen1(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
-      <Link to={`/movies/${movie.id}/moviecredits`} open={linkOpen} onClose={() => setLinkOpen(false)}>
-            <Fab key="fab2"
-        component="Link"
-        href={`/movies/${movie.id}/moviecredits`}
-        color="secondary"
-        variant="extended"
-        onClick={() =>setLinkOpen(true)}
-        className={classes.fab2}
-      >
-        <NavigationIcon />
-        Cast
-      </Fab>
-       </Link>
 
-      {/* <Drawer  anchor="top" open={drawerOpen2} onClose={() => setDrawerOpen2(false)}>
-        <MovieCredits movie={movie} />
-      </Drawer> */}
+      <Link to={`/movies/${movie.id}/moviecredits`} open={linkOpen} onClose={() => setLinkOpen(false)}>
+        <Fab key="fab2"
+          component="Link"
+          href={`/movies/${movie.id}/moviecredits`}
+          color="secondary"
+          variant="extended"
+          onClick={() =>setLinkOpen(true)}
+          className={classes.fab2}
+        >
+          <NavigationIcon />
+          Cast
+        </Fab>
+       </Link>
       </>
   );
 

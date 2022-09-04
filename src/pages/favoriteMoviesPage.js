@@ -37,8 +37,6 @@ return (
     <PageTemplate
       title="Favorite Movies"
       movies={movies}
-      /* code indicates that movie cards on the Favorite movies page 
-      should have two action icons: Remove from the Favorites and Write a Review */
       action={(movie) => { //introducing the render prop
         return (
           <>

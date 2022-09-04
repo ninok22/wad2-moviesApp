@@ -13,7 +13,6 @@ export default {
   component: CastList,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
-    // (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
   ],
 };
 
@@ -29,7 +28,6 @@ export const Basic = () => {
     <Grid container spacing={5}>
       <CastList
       moviecredits={moviecredits}
-        // action={(movie) => <AddToFavoritesIcon movie={movie} />}
       />
     </Grid>
   );

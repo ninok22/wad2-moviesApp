@@ -27,8 +27,6 @@ return (
   <PageTemplate
     title="Discover Movies"
     movies={movies}
-    //the render prop function returns the icon 
-    //to displayin movie card on the home page (RED ICON?)
     action={(movie) => {                    
       return <AddToFavoritesIcon movie={movie} />
     }}

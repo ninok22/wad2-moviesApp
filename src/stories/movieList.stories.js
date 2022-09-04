@@ -1,5 +1,4 @@
 // New Stories added 1
-
 import React from "react";
 import MovieList from "../components/movieList";
 import SampleMovie from "./sampleData";

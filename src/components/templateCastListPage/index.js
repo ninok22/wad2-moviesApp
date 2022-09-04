@@ -1,7 +1,5 @@
-// import React, { useState } from "react";
 import React from "react";
 import Header from "../headerMovieList";
-// import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import CastList from "../castList";
@@ -12,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-// function MovieListPageTemplate({ movies, title, selectFavorite }) {
+
 function CastListPageTemplate({ moviecredits, title }) {
   const classes = useStyles();
 

@@ -20,14 +20,13 @@ const UpcomingMoviesPage = (props) => {
 
     // Redundant, but necessary to avoid app crashing.
     const mustWatchList = movies.filter(m => m.mustWatch)
-    localStorage.setItem('mustWatchList', JSON.stringify(mustWatchList))
-    // const addToMustWatch = (movieId) => true 
+    localStorage.setItem('mustWatchList', JSON.stringify(mustWatchList)) 
     
   return (
     <PageTemplate
       title="Upcoming Movies"
       movies={movies}
-      action={(movie) => { //render prop's function returns the icon to display in movie cards on the upcoming movies page
+      action={(movie) => { 
         return <AddToMustWatchIcon movie={movie} />
       }}
     />

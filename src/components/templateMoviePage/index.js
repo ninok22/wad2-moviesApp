@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import React from "react";  // useState/useEffect redundant 
 import MovieHeader from "../headerMovie";
 import Grid from "@material-ui/core/Grid";
