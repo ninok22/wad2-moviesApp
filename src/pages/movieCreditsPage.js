@@ -4,7 +4,7 @@ import PageTemplate from "../components/templateCastListPage";
 import { getMovieCredits } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-
+import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
 const MovieCreditsPage = (props) => {
   const { id } = props.match.params;
@@ -23,9 +23,9 @@ return (
   <PageTemplate
     title="Cast List"
     moviecredits={moviecredit}
-    // action={(movie) => {                    
-    //   return <AddToFavoritesIcon movie={movie} />
-    // }}
+    action={(movie) => {                    
+      return <AddToFavoritesIcon movie={movie} />
+    }}
   />
 );
 };

@@ -1,21 +1,28 @@
 import React, { useState } from "react";
+// import { getMovies } from "./api/movie-api";
+
 
 export const MoviesContext = React.createContext(null);
-
+  
 const MoviesContextProvider = (props) => {
   //storing only selected movie id in the mustWatchList array
   const [mustWatchList, setMustWatch] = useState( [] ) // NEW  E4
   const [myReviews, setMyReviews] = useState( {} ) // NEW 
-  const [favorites, setFavorites] = useState( [] ) 
+  const [favorites, setFavorites] = useState( [] );
+
+
+
 
   const addToFavorites = (movie) => {
     let newFavorites = [];
     if (!favorites.includes(movie.id)){
       newFavorites = [...favorites, movie.id];
+    } else{
+      newFavorites = favorites;
     }
     setFavorites(newFavorites)
   };
-
+  
   const removeFromFavorites = (movie) => {
     setFavorites( favorites.filter(
       (mId) => mId !== movie.id
@@ -49,7 +56,7 @@ const MoviesContextProvider = (props) => {
         addReview,
         mustWatchList,
         addToMustWatch,
-        removeFromMustWatch
+        removeFromMustWatch,
       }}
     >
       {props.children}

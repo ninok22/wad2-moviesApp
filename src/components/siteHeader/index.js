@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -20,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
+
+
 const SiteHeader = ( { history }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,6 +34,8 @@ const SiteHeader = ( { history }) => {
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Must Watch", path: "/movies/mustWatchList" },
     { label: "Top Rated", path: "/movies/topRated" },
+    { label: "Sign In", path: "/login" },
+    { label: "Sign Up", path: "/signup" },
   ];
 
   const handleMenuSelect = (pageURL) => {

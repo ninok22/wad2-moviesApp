@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import HomePage from "./pages/homePage";
@@ -15,6 +15,13 @@ import MustWatchListPage from './pages/mustWatchListPage';
 import TopRatedMoviesPage from './pages/topRatedMoviesPage';
 import MovieCreditsPage from './pages/movieCreditsPage';
 import PersonPage from './pages/personDetailsPage';
+import LoginPage from "./pages/loginPage";
+import SignUpPage from "./pages/signUpPage";
+import PrivateRoute from "./privateRoute";
+import AuthProvider from "./contexts/authContext";
+import BaseAuthHeader from "./authHeader";
+
+
 
 //retain all data in the cache for 1 hour before it becomes invalidated.
 const queryClient = new QueryClient({
@@ -31,26 +38,33 @@ const App = () => {
     return (
     <QueryClientProvider client={queryClient}>  
       <BrowserRouter>
-          <SiteHeader />      {/* New Header  */}
-          <MoviesContextProvider>
-            {" "}
-          <Switch></Switch>
-        <Switch>
-          <Route path="/person/" component={PersonPage} />
-          <Route path="/movies/:id/moviecredits" component={MovieCreditsPage} />
-          <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
-          <Route exact path="/movies/mustWatchList" component={MustWatchListPage} />
-          <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-          <Route exact path="/reviews/form" component={AddMovieReviewPage} />
-          <Route path="/reviews/:id" component={MovieReviewPage} />
-          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-          <Route path="/movies/:id" component={MoviePage} />
-          <Route exact path="/" component={HomePage} />
-          <Redirect from="*" to="/" />
-        </Switch>
-        </MoviesContextProvider>
+        <AuthProvider>
+          <BaseAuthHeader />
+            <SiteHeader />      {/* New Header  */}
+            <MoviesContextProvider>
+              {" "}
+          {/* <Switch></Switch> */}
+              <Switch>
+                <Route exact path="/login" component={LoginPage} />
+                {/* <PrivateRoute path="/profile" component={Profile} /> */}
+                {/* <Route path="/public" component={PublicPage} /> */}
+                <Route exact path="/signup" component={SignUpPage} />
+                <Route path="/person/" component={PersonPage} />
+                <Route path="/movies/:id/moviecredits" component={MovieCreditsPage} />
+                <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
+                <PrivateRoute exact path="/movies/mustWatchList" component={MustWatchListPage} />
+                <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+                <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+                <Route path="/reviews/:id" component={MovieReviewPage} />
+                <PrivateRoute exact path="/movies/favorites" component={FavoriteMoviesPage} />
+                <Route path="/movies/:id" component={MoviePage} />
+                <Route exact path="/" component={HomePage} />
+                <Redirect from="*" to="/" />
+              </Switch>
+            </MoviesContextProvider>
+        </AuthProvider>
       </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false} />
+    <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
     );
   };

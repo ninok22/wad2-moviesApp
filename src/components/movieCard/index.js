@@ -27,8 +27,8 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  const { favorites, addToFavorites } = useContext(MoviesContext);
   const { mustWatchList, addToMustWatch } = useContext(MoviesContext);
+  const { favorites, addToFavorites } = useContext(MoviesContext);
 
 
   if (favorites.find((id) => id === movie.id)) {
@@ -43,7 +43,7 @@ export default function MovieCard({ movie, action }) {
     movie.mustWatch = false
   }
 
-  const handleAddToFavorite = (e) => {
+  const handleAddToFavorites = (e) => {
     e.preventDefault();
     addToFavorites(movie);
   };
